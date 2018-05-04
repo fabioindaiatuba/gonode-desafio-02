@@ -1,0 +1,40 @@
+{% extends 'layouts/default.njk' %}
+
+{% block body %}
+  <div class="wrapper">
+    {% include 'partials/header.njk' %}
+
+    <section id="main">
+      <div class="container">
+        {% include 'partials/headerProject.njk' %}
+
+        <section id="content">
+          {% include 'partials/sections.njk' %}
+
+          <article>
+            <div class="project-header">
+              <h1>{{activeSection.title}}</h1>
+              <a href="" data-modal-open="#edit-section" >Editar seção</a>
+              <form method="POST" action="/app/projects/{{ project.id }}/sections/{{ activeSection.id }}?_method=DELETE">
+                <button type="submit" class="btn-link btn-danger">Remover seção</button>
+              </form>
+            </div>
+            <div class="content">{{ activeSection.formattedContent | safe }}</div>
+          </article>
+        </section>
+      </div>
+      <div class="modal" id="edit-section">
+        <form class="modal-content" method="POST" action="/app/projects/{{ project.id }}/sections/{{ activeSection.id }}?_method=PUT">
+          <input type="text" name="title" placeholder="Título da seção" value="{{ activeSection.title }}">
+          <div class="content-container">
+            <textarea name="content" class="mde" placeholder="Conteúdo da seção" >{{ activeSection.content }}</textarea>
+          </div>
+
+          <button type="submit">SALVAR SEÇÃO</button>
+          <a href="#" data-modal-close="#edit-section">CANCELAR</a>
+        </form>
+      </div>
+    </section>
+
+  </div>
+{% endblock %}

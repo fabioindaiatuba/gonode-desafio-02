@@ -1,0 +1,8 @@
+<header>
+  <h2>{{ project.title }}</h2>
+  <div class="addon">
+    <form method="POST" action="/app/projects/{{ project.id }}?_method=DELETE">
+      <button type="submit" class="btn btn-danger">Excluir projeto</button>
+    </form>
+  </div>
+</header>
