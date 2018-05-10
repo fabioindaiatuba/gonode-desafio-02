@@ -13,16 +13,19 @@
 
           <article>
             <div class="project-header">
-              <h1>{{activeSection.title}}</h1>
+              <h1>{{activeSection.title}} </h1>
               <a href="" data-modal-open="#edit-section" >Editar seção</a>
               <form method="POST" action="/app/projects/{{ project.id }}/sections/{{ activeSection.id }}?_method=DELETE">
                 <button type="submit" class="btn-link btn-danger">Remover seção</button>
               </form>
             </div>
-            <div class="content">{{ activeSection.formattedContent | safe }}</div>
+            <p>
+              <div class="wrapper">{{ activeSection.formattedContent | safe }}</div>
+            </p>
           </article>
         </section>
       </div>
+
       <div class="modal" id="edit-section">
         <form class="modal-content" method="POST" action="/app/projects/{{ project.id }}/sections/{{ activeSection.id }}?_method=PUT">
           <input type="text" name="title" placeholder="Título da seção" value="{{ activeSection.title }}">

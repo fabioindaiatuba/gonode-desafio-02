@@ -362,6 +362,7 @@ input:focus, textarea:focus {
 }
 
 .wrapper section#main #content article {
+  max-width: 530px;
   flex: 1;
   margin: 20px 0 30px 30px;
   color: #666;
